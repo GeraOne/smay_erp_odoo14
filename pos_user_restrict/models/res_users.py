@@ -25,4 +25,4 @@ class ResUsers(models.Model):
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    x_user_smay = fields.One2many('res.users', 'x_branch_id', 'Usuarios')
+   # x_user_smay = fields.One2many('res.users', 'x_branch_id', 'Usuarios')
