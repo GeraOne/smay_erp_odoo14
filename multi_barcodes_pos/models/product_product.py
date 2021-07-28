@@ -63,7 +63,7 @@ class ProductProduct(models.Model):
         product_ids = self.env['multi.barcode.products'].search([('multi_barcode', '=', name)]).mapped(
             'product_multi.id')
         if product_ids:
-            return self.env['product.template'].search([('type','=','product')])
+            return [id for id in self.env['product.template'].search([('type','=','product')])]
             #return models.lazy_name_get(self.browse(product_ids).with_user(name_get_uid))
         return res
 
