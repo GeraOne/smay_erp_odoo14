@@ -19,7 +19,7 @@ class ResUsers(models.Model):
 
     x_pos_config_ids = fields.Many2many('pos.config', string='Puntos de Venta disponibles',
                                         help="Puntos de Venta disponibles para el usuario. El encargado de POS puede ver todos los puntos de venta.")
-    #x_branch_id = fields.Many2one('res.partner', 'Sucursal')
+    x_branch_id = fields.Many2one('res.partner', 'Sucursal')
 
 
 '''class ResPartner(models.Model):
