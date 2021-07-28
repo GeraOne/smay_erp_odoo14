@@ -59,12 +59,14 @@ class ProductProduct(models.Model):
         if len(res) > 0:
             _logger.warning('encontro producto')
             _logger.warning(str(res))
-            return [55,56]
+            return [67]
             return res
         product_ids = self.env['multi.barcode.products'].search([('multi_barcode', '=', name)]).mapped(
             'product_multi.id')
         if product_ids:
-            return [id for id in self.env['product.template'].search([('type','=','product')])]
+            _logger.warning('Segunda busqueda')
+            _logger.warning(str(product_ids))
+            return [id for id in self.env['product.product'].search([('type','=','product')])]
             #return models.lazy_name_get(self.browse(product_ids).with_user(name_get_uid))
         return res
 
