@@ -12,7 +12,6 @@
                         <field name="x_pos_config_ids"
                                widget="many2many_tags"
                                groups="point_of_sale.group_pos_user"/>
-                        <!--<field name="x_branch_id"/>-->
                     </group>
                 </page>
             </xpath>
