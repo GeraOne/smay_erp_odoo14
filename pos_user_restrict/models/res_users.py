@@ -22,7 +22,7 @@ class ResUsers(models.Model):
     x_branch_id = fields.Many2one('res.partner', 'Sucursal')
 
 
-class ResPartner(models.Model):
+'''class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-   # x_user_smay = fields.One2many('res.users', 'x_branch_id', 'Usuarios')
+   x_user_smay = fields.One2many('res.users', 'x_branch_id', 'Usuarios')'''
