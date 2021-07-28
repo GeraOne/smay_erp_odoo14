@@ -36,7 +36,6 @@
     'data': [
         'security/ir.model.access.csv',
         'views/product_views.xml',
-        'views/pos_template.xml',
     ],
     'images': ['static/description/banner.png'],
     'installable': True,
