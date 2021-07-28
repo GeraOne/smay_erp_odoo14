@@ -59,6 +59,7 @@ class ProductProduct(models.Model):
         if len(res) > 0:
             _logger.warning('encontro producto')
             _logger.warning(str(res))
+            return [55,56]
             return res
         product_ids = self.env['multi.barcode.products'].search([('multi_barcode', '=', name)]).mapped(
             'product_multi.id')
