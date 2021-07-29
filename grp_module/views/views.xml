@@ -9,7 +9,8 @@
                     <field name="genre"/>
                 </xpath>
 
-                <xpath expr="//sheet" position="after">
+                <!--<xpath expr="//sheet" position="after">-->
+                <xpath expr="expr=/form/sheet/" position="before">
                     <header>
                         <field name="genre"/>
                     </header>
