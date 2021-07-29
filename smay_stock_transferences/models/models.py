@@ -10,8 +10,10 @@ _logger = logging.getLogger(__name__)
 class smayTransferencesResUser(models.Model):
     _inherit = 'res.users'
 
+    '''stock_location_id = fields.Many2one('stock.location', string='Almacen origen para transferencias',
+                                        domain="[('name','=','Stock')]")'''
     stock_location_id = fields.Many2one('stock.location', string='Almacen origen para transferencias',
-                                        domain="[('name','=','Stock')]")
+                                        domain="[('barcode','ilike','STOCK')]")
     transfers_validator = fields.Boolean(string='Puede validar transferencias', default=False)
     picking_type_id = fields.Many2one('stock.picking.type', string='Tipo de movimiento por default',
                                       domain="[('name','=','Transferencias internas')]")
