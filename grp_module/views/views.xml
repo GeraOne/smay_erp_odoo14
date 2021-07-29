@@ -6,7 +6,7 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//field[@name='vat']" position="after">
-                    <field name="genre"/>
+                    <field name="genre" readonly="True"/>
                     <!--<button name="change_genre"
                             string="CAMBIAR GENERO"
                             type="object"
@@ -17,9 +17,9 @@
                 <xpath expr="/form/sheet" position="before">
                     <header>
                         <button name="change_genre"
-                            string="CAmbiar genero"
-                            type="object"
-                            class="oe_highlight"/>
+                                string="CAMBIAR GENERO"
+                                type="object"
+                                class="oe_highlight"/>
                     </header>
                 </xpath>
             </field>

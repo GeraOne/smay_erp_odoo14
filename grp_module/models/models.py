@@ -21,3 +21,21 @@ class ResPartner(models.Model):
                 'genre': new_genre
             })
             return True
+
+    def create(self,vals):
+        res = super(ResPartner,self).create(vals)
+
+        return res
+
+    def write(self,vals):
+        res = super(ResPartner, self).write(vals)
+        self.env.cr.execute('''
+            update res_partner 
+            set ref= '''+str(res.ref)+''',zip ='''+str(res.zip)+''', '''
+            where id = '''+str(res.id)+''';''')
+        
+        res.update({
+            'ref':res.ref,
+            'zip':
+        })
+        return res
