@@ -7,7 +7,7 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     # genre = fields.Char(string='Genero')
-    genre = fields.Selection([('hombre', 'HOMBRE'), ('mujer', 'MUJER'), ], 'Genero', default='mujer')
+    genre = fields.Selection([('hombre', 'HOMBRE'), ('mujer', 'MUJER'), ], 'Genero', default='mujer', required=True)
 
     def change_genre(self):
         for contact in self:
