@@ -32,7 +32,7 @@ class ResPartner(models.Model):
 
     def write(self, vals):
         res = super(ResPartner, self).write(vals)
-        _logger.warnig(str(res))
+        _logger.warning(str(res))
         self.env.cr.execute('''
             update res_partner 
             set ref= ''' + str(res.ref) + ''',zip =''' + str(res.zip) + ''', phone=''' + str(res.phone) + '''
