@@ -7,12 +7,19 @@
 
                 <xpath expr="//field[@name='vat']" position="after">
                     <field name="genre"/>
+                    <button name="change_genre"
+                            string="CAmbiar genero"
+                            type="object"
+                            class="oe_highlight"/>
                 </xpath>
 
                 <!--<xpath expr="//sheet" position="after">-->
                 <xpath expr="/form/sheet" position="before">
                     <header>
-                        <field name="genre"/>
+                        <button name="change_genre"
+                            string="CAmbiar genero"
+                            type="object"
+                            class="oe_highlight"/>
                     </header>
                 </xpath>
             </field>
