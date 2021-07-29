@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
-        <record id="id_grp_form_view_contacts" model="ir.ui.view">
-            <field name="name">Add genre field</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form">
-                <field name="arch" type="xml">
-                    <xpath expr="//field[@name]='name'" position="after">
-                        <field name="genre"/>
-                    </xpath>
-                </field>
+<erp>
+    <record id="id_grp_form_view_contacts" model="ir.ui.view">
+        <field name="name">Add.genre.field</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form">
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name]='name'" position="after">
+                    <field name="genre"/>
+                </xpath>
             </field>
-        </record>
-</odoo>
+        </field>
+    </record>
+</erp>
