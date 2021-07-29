@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<erp>
+<odoo>
     <record id="id_grp_form_view_contacts" model="ir.ui.view">
         <field name="name">Add.genre.field</field>
         <field name="model">res.partner</field>
@@ -11,4 +11,4 @@
             </field>
         </field>
     </record>
-</erp>
+</odoo>
