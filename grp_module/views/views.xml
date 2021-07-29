@@ -1,10 +1,10 @@
 <odoo>
 
-        <record id="grp_form_view_contaqcts" model="ir.ui.view">
+        <record id="grp_form_view_contacts" model="ir.ui.view">
             <field name="name">Add genre field</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="contacts.res_partner_menu_contacts">
-                <xpath expr="//form/header" position="inside">
+                <xpath expr="field[@name]='category_id'" position="after">
                     <button name="change_genre"
                             string="Cambiar Genero"
                             type="object"
