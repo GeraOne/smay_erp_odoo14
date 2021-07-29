@@ -71,12 +71,15 @@ class ProductProduct(models.Model):
         product_ids = self.env['multi.barcode.products'].search([('multi_barcode', 'ilike', name)])
 
         if product_ids:
+            products =[]
             for prod_id in product_ids:
                 res = super(ProductProduct, self)._name_search(prod_id.template_multi.name, args, operator, limit,
                                                                name_get_uid)
+                products.append(res)
                 _logger.warning('RES')
                 _logger.warning(str(res))
-            return res
+
+            return list(set(products))
 
         return res
 
