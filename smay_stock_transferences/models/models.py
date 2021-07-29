@@ -18,7 +18,7 @@ class smayTransferencesResUser(models.Model):
     '''picking_type_id = fields.Many2one('stock.picking.type', string='Tipo de movimiento por default',
                                       domain="[('name','=','Transferencias internas')]")'''
     picking_type_id = fields.Many2one('stock.picking.type', string='Tipo de movimiento por default',
-                                      domain="[('name','=','Internal Transfers')]")
+                                      domain="[('sequence_code','=','INT')]")
     sucursal_transferencias_id = fields.Many2one('res.partner', 'Sucursal Transferencias')
 
 
