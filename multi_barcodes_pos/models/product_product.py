@@ -75,16 +75,7 @@ class ProductProduct(models.Model):
             for prod_id in product_ids:
                 res = super(ProductProduct, self)._name_search(prod_id.template_multi.name, args, operator, limit,
                                                                name_get_uid)
-                products.append(res)
-                if res and res not in products:
-                    _logger.warning('RES')
-                    _logger.warning(str(res))
-
-            _logger.warning('SALIDA')
-            _logger.warning(str(products))
-
-            return products
-
+                return res
         return res
 
 
