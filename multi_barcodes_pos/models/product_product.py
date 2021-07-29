@@ -76,10 +76,14 @@ class ProductProduct(models.Model):
                 res = super(ProductProduct, self)._name_search(prod_id.template_multi.name, args, operator, limit,
                                                                name_get_uid)
                 products.append(res)
-                _logger.warning('RES')
-                _logger.warning(str(res))
+                if res and res not in products:
+                    _logger.warning('RES')
+                    _logger.warning(str(res))
 
-            return list(set(products))
+            _logger.wrning('SALIDA')
+            _logger.warning(str(products))
+
+            return products
 
         return res
 
