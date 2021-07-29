@@ -1,5 +1,4 @@
 <odoo>
-    <data>
 
         <record id="grp_form_view_contaqcts" model="ir.ui.view">
             <field name="name">Add genre field</field>
@@ -75,5 +74,4 @@
             <menuitem name="Server to list" id="grp_module" parent="grp_module.menu_2"
                       action="grp_module.action_server"/>
         -->
-    </data>
 </odoo>
