@@ -1,9 +1,39 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api,tools
 import logging
 
 _logger = logging.getLogger(__name__)
+
+
+class GenreReport(models.TransientModel):
+    _name = 'data.genre.report'
+    _description = 'Data de reporte'
+    _auto = False
+
+    genre = fields.Char('Genero')
+    total_genre = fields.Integer('Contatos')
+    percent = fields.Float('Procentaje')
+
+    def init(self):
+        tools.drop_view_if_exists(self.env.cr, 'data_genre_report')
+        self.env.cr.execute()
+
+
+
+    def generate_report(self):
+        self.env['stock.report.smay'].init()
+        return {
+            'name': _("Reporte de Generos Contatos"),
+            'view_mode': 'pivot',
+            'view_id': False,
+            'view_type': 'pivot',
+            'res_model': 'stock.report.smay',
+            'type': 'ir.actions.act_window',
+            'nodestroy': True,
+            'domain': '[]',
+            'context': None
+        }
 
 
 class ResPartner(models.Model):
