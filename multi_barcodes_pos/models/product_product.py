@@ -57,25 +57,12 @@ class ProductProduct(models.Model):
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
         res = super(ProductProduct, self)._name_search(name, args, operator, limit, name_get_uid)
         if len(res) > 0:
-            _logger.warning('encontro producto')
-            _logger.warning(str(res))
             return res
-        '''product_ids = self.env['multi.barcode.products'].search([('multi_barcode', '=', name)]).mapped(
-            'product_multi.id')
-        if product_ids:
-            _logger.warning('Segunda busqueda')
-            _logger.warning(str(product_ids))
-            return tuple([id for id in self.env['product.product'].search([('type','=','product')])])
-            #return models.lazy_name_get(self.browse(product_ids).with_user(name_get_uid))'''
-        # product_id = self.env['multi.barcode.products'].search([('multi_barcode', 'ilike', name)],limit=1)
-        product_ids = self.env['multi.barcode.products'].search([('multi_barcode', 'ilike', name)])
-
-        if product_ids:
-            products =[]
-            for prod_id in product_ids:
-                res = super(ProductProduct, self)._name_search(prod_id.template_multi.name, args, operator, limit,
-                                                               name_get_uid)
-                return res
+        product_id = self.env['multi.barcode.products'].search([('multi_barcode', 'ilike', name)], limit=1)
+        if product_id:
+            res = super(ProductProduct, self)._name_search(product_id.template_multi.name, args, operator, limit,
+                                                           name_get_uid)
+            return res
         return res
 
 
