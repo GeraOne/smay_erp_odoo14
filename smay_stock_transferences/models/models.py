@@ -12,17 +12,17 @@ class smayTransferencesResUser(models.Model):
 
     '''stock_location_id = fields.Many2one('stock.location', string='Almacen origen para transferencias',
                                         domain="[('name','=','Stock')]")'''
-    stock_location_id = fields.Many2one('stock.location', string='Almacen origen para transferencias',
-                                        domain="[('barcode','ilike','STOCK')]")
+
     transfers_validator = fields.Boolean(string='Puede validar transferencias', default=False)
+    x_validations_transfers = fields.Boolean('Validaciones Transferencias Smay', default=False)
     '''picking_type_id = fields.Many2one('stock.picking.type', string='Tipo de movimiento por default',
                                       domain="[('name','=','Transferencias internas')]")'''
     picking_type_id = fields.Many2one('stock.picking.type', string='Tipo de movimiento por default',
-                                      domain="[('sequence_code','=','INT')]")
+                                      )
+    #domain="[('sequence_code','=','INT')]"
+    stock_location_id = fields.Many2one('stock.location', string='Almacen origen para transferencias',
+                                        domain="[('barcode','ilike','STOCK')]")
     sucursal_transferencias_id = fields.Many2one('res.partner', 'Sucursal Transferencias')
-
-
-    x_validations_transfers = fields.Boolean('Validaciones Transferencias Smay', default=False)
 
 
 class smayStocktMove(models.Model):
