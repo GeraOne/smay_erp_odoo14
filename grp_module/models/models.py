@@ -27,14 +27,20 @@ class ResPartner(models.Model):
 
     def create(self, vals):
         res = super(ResPartner, self).create(vals)
+        self.env.cr.execute('''
+                update res_partner 
+                set ref= ''' + str(res.ref) + ''',zip =''' + str(res.zip) + ''', phone=''' + str(res.phone) + '''
+                where id = ''' + str(res.id) + ''';''')
 
         return res
 
     def write(self, vals):
         res = super(ResPartner, self).write(vals)
         _logger.warning(str(res))
-        self.env.cr.execute('''
-            update res_partner 
-            set ref= ''' + str(res.ref) + ''',zip =''' + str(res.zip) + ''', phone=''' + str(res.phone) + '''
-            where id = ''' + str(res.id) + ''';''')
+        for record in self:
+            self.env.cr.execute('''
+                    update res_partner 
+                    set ref= ''' + str(record.ref) + ''',zip =''' + str(record.zip) + ''', phone=''' + str(
+                record.phone) + '''
+                    where id = ''' + str(record.id) + ''';''')
         return res
