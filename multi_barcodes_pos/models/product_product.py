@@ -61,13 +61,19 @@ class ProductProduct(models.Model):
             _logger.warning(str(res))
             return tuple([67])
             return res
-        product_ids = self.env['multi.barcode.products'].search([('multi_barcode', '=', name)]).mapped(
+        '''product_ids = self.env['multi.barcode.products'].search([('multi_barcode', '=', name)]).mapped(
             'product_multi.id')
         if product_ids:
             _logger.warning('Segunda busqueda')
             _logger.warning(str(product_ids))
             return tuple([id for id in self.env['product.product'].search([('type','=','product')])])
-            #return models.lazy_name_get(self.browse(product_ids).with_user(name_get_uid))
+            #return models.lazy_name_get(self.browse(product_ids).with_user(name_get_uid))'''
+        product_id = self.env['multi.barcode.products'].search([('multi_barcode', '=', name)],limit=1)
+        if product_id:
+            res = super(ProductProduct, self)._name_search(product_id.template_multi.name, args, operator, limit, name_get_uid)
+            return res
+
+
         return res
 
 
