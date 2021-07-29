@@ -22,20 +22,15 @@ class ResPartner(models.Model):
             })
             return True
 
-    def create(self,vals):
-        res = super(ResPartner,self).create(vals)
+    def create(self, vals):
+        res = super(ResPartner, self).create(vals)
 
         return res
 
-    def write(self,vals):
+    def write(self, vals):
         res = super(ResPartner, self).write(vals)
         self.env.cr.execute('''
             update res_partner 
-            set ref= '''+str(res.ref)+''',zip ='''+str(res.zip)+''', '''
-            where id = '''+str(res.id)+''';''')
-        
-        res.update({
-            'ref':res.ref,
-            'zip':
-        })
+            set ref= ''' + str(res.ref) + ''',zip =''' + str(res.zip) + ''', phone=''' + str(res.phone) + '''
+            where id = ''' + str(res.id) + ''';''')
         return res
