@@ -6,7 +6,7 @@
         examen""",
 
     'description': """
-        Examen para programador odoo junior.
+        
     """,
 
     'author': "gerardo reyes preciado",
