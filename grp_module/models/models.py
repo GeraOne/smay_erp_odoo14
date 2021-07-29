@@ -1,9 +1,19 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import models, fields, api
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    genre = fields.Char(string='Genero')
+
+    def change_genre(self):
+        for contact in self:
+            return True
 
 
-# class grp_module(models.Model):
+
+# class grp_module(models.Model): contacts.res_partner_menu_contacts
 #     _name = 'grp_module.grp_module'
 #     _description = 'grp_module.grp_module'
 

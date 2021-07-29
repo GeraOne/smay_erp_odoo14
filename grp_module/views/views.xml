@@ -1,60 +1,79 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="grp_module.list">
-      <field name="name">grp_module list</field>
-      <field name="model">grp_module.grp_module</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
--->
+    <data>
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="grp_module.action_window">
-      <field name="name">grp_module window</field>
-      <field name="res_model">grp_module.grp_module</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
+        <record id="grp_form_view_contaqcts" model="ir.ui.view">
+            <field name="name">Add genre field</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="contacts.res_partner_menu_contacts">
+                <xpath expr="//form/header" position="inside">
+                    <button name="change_genre"
+                            string="Cambiar Genero"
+                            type="object"
+                            class="oe_highlight"/>
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="grp_module.action_server">
-      <field name="name">grp_module server</field>
-      <field name="model_id" ref="model_grp_module_grp_module"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
+                </xpath>
+                <xpath expr="//field[@name]='category_id'" position="after">
+                    <field name="genre"/>
+                </xpath>
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="grp_module" id="grp_module.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="grp_module.menu_1" parent="grp_module.menu_root"/>
-    <menuitem name="Menu 2" id="grp_module.menu_2" parent="grp_module.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="grp_module.menu_1_list" parent="grp_module.menu_1"
-              action="grp_module.action_window"/>
-    <menuitem name="Server to list" id="grp_module" parent="grp_module.menu_2"
-              action="grp_module.action_server"/>
--->
-  </data>
+            </field>
+
+        </record>
+        <!-- explicit list view definition -->
+        <!--
+            <record model="ir.ui.view" id="grp_module.list">
+              <field name="name">grp_module list</field>
+              <field name="model">grp_module.grp_module</field>
+              <field name="arch" type="xml">
+                <tree>
+                  <field name="name"/>
+                  <field name="value"/>
+                  <field name="value2"/>
+                </tree>
+              </field>
+            </record>
+        -->
+
+        <!-- actions opening views on models -->
+        <!--
+            <record model="ir.actions.act_window" id="grp_module.action_window">
+              <field name="name">grp_module window</field>
+              <field name="res_model">grp_module.grp_module</field>
+              <field name="view_mode">tree,form</field>
+            </record>
+        -->
+
+        <!-- server action to the one above -->
+        <!--
+            <record model="ir.actions.server" id="grp_module.action_server">
+              <field name="name">grp_module server</field>
+              <field name="model_id" ref="model_grp_module_grp_module"/>
+              <field name="state">code</field>
+              <field name="code">
+                action = {
+                  "type": "ir.actions.act_window",
+                  "view_mode": "tree,form",
+                  "res_model": model._name,
+                }
+              </field>
+            </record>
+        -->
+
+        <!-- Top menu item -->
+        <!--
+            <menuitem name="grp_module" id="grp_module.menu_root"/>
+        -->
+        <!-- menu categories -->
+        <!--
+            <menuitem name="Menu 1" id="grp_module.menu_1" parent="grp_module.menu_root"/>
+            <menuitem name="Menu 2" id="grp_module.menu_2" parent="grp_module.menu_root"/>
+        -->
+        <!-- actions -->
+        <!--
+            <menuitem name="List" id="grp_module.menu_1_list" parent="grp_module.menu_1"
+                      action="grp_module.action_window"/>
+            <menuitem name="Server to list" id="grp_module" parent="grp_module.menu_2"
+                      action="grp_module.action_server"/>
+        -->
+    </data>
 </odoo>
