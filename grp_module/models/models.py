@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 
+
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
@@ -10,8 +11,6 @@ class ResPartner(models.Model):
     def change_genre(self):
         for contact in self:
             return True
-
-
 
 # class grp_module(models.Model): contacts.res_partner_menu_contacts
 #     _name = 'grp_module.grp_module'
