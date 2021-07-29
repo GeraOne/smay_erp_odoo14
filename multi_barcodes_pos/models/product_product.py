@@ -80,7 +80,7 @@ class ProductProduct(models.Model):
                     _logger.warning('RES')
                     _logger.warning(str(res))
 
-            _logger.wrning('SALIDA')
+            _logger.warning('SALIDA')
             _logger.warning(str(products))
 
             return products
