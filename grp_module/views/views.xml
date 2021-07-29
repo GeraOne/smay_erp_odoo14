@@ -10,7 +10,7 @@
                 </xpath>
 
                 <!--<xpath expr="//sheet" position="after">-->
-                <xpath expr="/form/sheet/" position="before">
+                <xpath expr="/form/sheet" position="before">
                     <header>
                         <field name="genre"/>
                     </header>
