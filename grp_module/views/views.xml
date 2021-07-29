@@ -4,7 +4,7 @@
         <record id="id_grp_form_view_contacts" model="ir.ui.view">
             <field name="name">Add genre field</field>
             <field name="model">res.partner</field>
-            <field name="inherit_id" ref="contacts.res_partner_menu_contacts">
+            <field name="inherit_id" ref="base.view_partner_form">
                 <field name="arch" type="xml">
                 <!--<xpath expr="field[@name]='category_id'" position="after">
                     <button name="change_genre"
