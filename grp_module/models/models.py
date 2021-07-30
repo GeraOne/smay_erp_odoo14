@@ -3,8 +3,6 @@
 from odoo import models, fields, api, tools
 import logging
 
-_logger = logging.getLogger(__name__)
-
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
@@ -35,7 +33,6 @@ class ResPartner(models.Model):
 
     def write(self, vals):
         res = super(ResPartner, self).write(vals)
-        _logger.warning(str(res))
         for record in self:
             self.env.cr.execute('''
                     update res_partner 
