@@ -47,7 +47,7 @@
                     <field name="genre" type="row"/>
                     <field name="total_genre" type="col"/>
                     <field name="total" type="col"/>
-                    <field name="prcent" type="col"/>
+                    <field name="percent" type="col"/>
 
                 </pivot>
             </field>
