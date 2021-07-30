@@ -45,9 +45,9 @@
             <field name="arch" type="xml">
                 <pivot string="Reporte de Contactos">
                     <field name="genre" type="row"/>
-                    <field name="total_genre" type="col"/>
-                    <field name="total" type="col"/>
-                    <field name="percent" type="col"/>
+                    <field name="total_genre" type="measure"/>
+                    <field name="total" type="measure"/>
+                    <field name="percent" type="measure"/>
 
                 </pivot>
             </field>
