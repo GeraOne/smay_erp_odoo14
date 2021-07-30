@@ -38,7 +38,6 @@
         <menuitem id="res_partner_reports"
         name="Reportes"
         parent="menu_contacts"
-        groups="base.group_system"
         sequence="5"/>
 
         <menuitem action="action_stock_report_contacts" id="menu_report_contacts" name="Reporte de Genero Contactos"
