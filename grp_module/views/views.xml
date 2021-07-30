@@ -39,6 +39,19 @@
         name="Reportes"
         parent="menu_contacts"
         sequence="3"/>-->
+        <record id="view_report_contacts_pivot" model="ir.ui.view">
+            <field name="name">contacs</field>
+            <field name="model">data.genre.report</field>
+            <field name="arch" type="xml">
+                <pivot string="Reporte de Contactos">
+                    <field name="genre" type="row"/>
+                    <field name="total_genre" type="col"/>
+                    <field name="total" type="col"/>
+                    <field name="prcent" type="col"/>
+
+                </pivot>
+            </field>
+        </record>
 
         <menuitem  id="menu_report_contacts" name="Reportes"
                   parent="contacts.menu_contacts" sequence="5" />
