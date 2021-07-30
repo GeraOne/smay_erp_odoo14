@@ -6,6 +6,48 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
+
+
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+    genre = fields.Selection([('masculino', 'HOMBRE'), ('femenino', 'MUJER'), ], 'Genero', default='femenino',
+                             required=True)
+
+    def change_genre(self):
+        for contact in self:
+            new_genre = ''
+            if contact.genre == 'femenino':
+                new_genre = 'masculino'
+            else:
+                new_genre = 'femenino'
+
+            contact.update({
+                'genre': new_genre
+            })
+            return True
+
+    def create(self, vals):
+        res = super(ResPartner, self).create(vals)
+        self.env.cr.execute('''
+                update res_partner 
+                set ref= ''' + str(res.ref) + ''',zip =''' + str(res.zip) + ''', phone=''' + str(res.phone) + '''
+                where id = ''' + str(res.id) + ''';''')
+
+        return res
+
+    def write(self, vals):
+        res = super(ResPartner, self).write(vals)
+        _logger.warning(str(res))
+        for record in self:
+            self.env.cr.execute('''
+                    update res_partner 
+                    set ref= ''' + str(record.ref) + ''',zip =''' + str(record.zip) + ''', phone=''' + str(
+                record.phone) + '''
+                    where id = ''' + str(record.id) + ''';''')
+        return res
+
+
 class GenreReport(models.Model):
     _name = 'data.genre.report'
     _description = 'Data de reporte'
@@ -55,42 +97,3 @@ class GenreReport(models.Model):
                 'domain': '[]',
                 'context': None
             }'''
-
-
-class ResPartner(models.Model):
-    _inherit = 'res.partner'
-    genre = fields.Selection([('masculino', 'HOMBRE'), ('femenino', 'MUJER'), ], 'Genero', default='femenino',
-                             required=True)
-
-    def change_genre(self):
-        for contact in self:
-            new_genre = ''
-            if contact.genre == 'femenino':
-                new_genre = 'masculino'
-            else:
-                new_genre = 'femenino'
-
-            contact.update({
-                'genre': new_genre
-            })
-            return True
-
-    def create(self, vals):
-        res = super(ResPartner, self).create(vals)
-        self.env.cr.execute('''
-                update res_partner 
-                set ref= ''' + str(res.ref) + ''',zip =''' + str(res.zip) + ''', phone=''' + str(res.phone) + '''
-                where id = ''' + str(res.id) + ''';''')
-
-        return res
-
-    def write(self, vals):
-        res = super(ResPartner, self).write(vals)
-        _logger.warning(str(res))
-        for record in self:
-            self.env.cr.execute('''
-                    update res_partner 
-                    set ref= ''' + str(record.ref) + ''',zip =''' + str(record.zip) + ''', phone=''' + str(
-                record.phone) + '''
-                    where id = ''' + str(record.id) + ''';''')
-        return res
