@@ -59,7 +59,7 @@ class GenreReport(models.Model):
     '''def generate_report(self):
         self.env['stock.report.smay'].init()
         return {
-            'name': _("Reporte de Generos Contatos"),
+            'name': "Reporte de Generos Contatos",
             'view_mode': 'pivot',
             'view_id': False,
             'view_type': 'pivot',
