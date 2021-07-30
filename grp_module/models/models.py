@@ -39,6 +39,7 @@ class GenreReport(models.Model):
                         FROM res_partner
                         ) as pt2
                     ON pt1.id = pt2.id
+                    )
              '''
         )
 
