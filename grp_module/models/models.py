@@ -6,18 +6,41 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class GenreReport(models.TransientModel):
+class GenreReport(models.Model):
     _name = 'data.genre.report'
     _description = 'Data de reporte'
     _auto = False
 
+    id = fields.Integer()
     genre = fields.Char('Genero')
     total_genre = fields.Integer('Contatos')
+    total = field.Integer('Todo Contactos')
     percent = fields.Float('Procentaje')
 
     def init(self):
         tools.drop_view_if_exists(self.env.cr, 'data_genre_report')
-        self.env.cr.execute()
+        self.env.cr.execute('''
+            CREATE OR REPLACE VIEW data_genre_report AS(
+                SELECT  1 as "id",
+                        pt1.genre as "genre",
+                        pt1.total as "total_genre", 
+                        pt2.total as "total", 
+                        round(cast(pt1.total as numeric)/cast(pt2.total as numeric)*100,2) as "percent"
+                    FROM(
+                        SELECT '1' id ,
+                            genre,
+                            count(*) total
+                        FROM res_partner
+                        GROUP BY  genre
+                        ) as pt1
+                    JOIN (
+                        SELECT '1' as id,
+                            count(*) total
+                        FROM res_partner
+                        ) as pt2
+                    ON pt1.id = pt2.id
+             '''
+        )
 
 
 
@@ -28,7 +51,7 @@ class GenreReport(models.TransientModel):
             'view_mode': 'pivot',
             'view_id': False,
             'view_type': 'pivot',
-            'res_model': 'stock.report.smay',
+            'res_model': 'data.genre.report',
             'type': 'ir.actions.act_window',
             'nodestroy': True,
             'domain': '[]',
