@@ -38,7 +38,7 @@
         <menuitem id="res_partner_reports"
         name="Reportes"
         parent="menu_contacts"
-        sequence="5"/>
+        sequence="3"/>
 
         <menuitem action="action_stock_report_contacts" id="menu_report_contacts" name="Reporte de Genero Contactos"
                   parent="contacts.res_partner_reports" sequence="5" />
