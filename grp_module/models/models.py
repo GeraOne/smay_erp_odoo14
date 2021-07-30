@@ -14,7 +14,7 @@ class GenreReport(models.Model):
     id = fields.Integer()
     genre = fields.Char('Genero')
     total_genre = fields.Integer('Contatos')
-    total = field.Integer('Todo Contactos')
+    total = fields.Integer('Todo Contactos')
     percent = fields.Float('Procentaje')
 
     def init(self):
