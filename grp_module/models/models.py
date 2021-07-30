@@ -6,9 +6,6 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-
-
-
 class ResPartner(models.Model):
     _inherit = 'res.partner'
     genre = fields.Selection([('masculino', 'HOMBRE'), ('femenino', 'MUJER'), ], 'Genero', default='femenino',
@@ -60,10 +57,8 @@ class GenreReport(models.Model):
     percent = fields.Float('Procentaje')
 
     def init(self):
-        contact = self.env['res.partner'].search([('id','>',0)],limit=1)
-        if contact and contact.genre:
-            tools.drop_view_if_exists(self.env.cr, 'data_genre_report')
-            self.env.cr.execute('''
+        tools.drop_view_if_exists(self.env.cr, 'data_genre_report')
+        self.env.cr.execute('''
                 CREATE OR REPLACE VIEW data_genre_report AS(
                     SELECT  1 as "id",
                             pt1.genre as "genre",
@@ -85,15 +80,4 @@ class GenreReport(models.Model):
                         ON pt1.id = pt2.id
                         )
                  '''
-                                )
-            '''return {
-                'name': "Reporte de Generos Contatos",
-                'view_mode': 'pivot',
-                'view_id': False,
-                'view_type': 'pivot',
-                'res_model': 'data.genre.report',
-                'type': 'ir.actions.act_window',
-                'nodestroy': True,
-                'domain': '[]',
-                'context': None
-            }'''
+                            )
