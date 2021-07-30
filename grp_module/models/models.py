@@ -17,42 +17,44 @@ class GenreReport(models.Model):
     total = fields.Integer('Todo Contactos')
     percent = fields.Float('Procentaje')
 
-    def init4(self):
-        tools.drop_view_if_exists(self.env.cr, 'data_genre_report')
-        self.env.cr.execute('''
-            CREATE OR REPLACE VIEW data_genre_report AS(
-                SELECT  1 as "id",
-                        pt1.genre as "genre",
-                        pt1.total as "total_genre", 
-                        pt2.total as "total", 
-                        round(cast(pt1.total as numeric)/cast(pt2.total as numeric)*100,2) as "percent"
-                    FROM(
-                        SELECT '1' id ,
-                            genre,
-                            count(*) total
-                        FROM res_partner
-                        GROUP BY  genre
-                        ) as pt1
-                    JOIN (
-                        SELECT '1' as id,
-                            count(*) total
-                        FROM res_partner
-                        ) as pt2
-                    ON pt1.id = pt2.id
-                    )
-             '''
-                            )
-        '''return {
-            'name': "Reporte de Generos Contatos",
-            'view_mode': 'pivot',
-            'view_id': False,
-            'view_type': 'pivot',
-            'res_model': 'data.genre.report',
-            'type': 'ir.actions.act_window',
-            'nodestroy': True,
-            'domain': '[]',
-            'context': None
-        }'''
+    def init(self):
+        contact = self.env['res.partner'].search([('id','>',0)],limit=1)
+        if contact and contact.genre:
+            tools.drop_view_if_exists(self.env.cr, 'data_genre_report')
+            self.env.cr.execute('''
+                CREATE OR REPLACE VIEW data_genre_report AS(
+                    SELECT  1 as "id",
+                            pt1.genre as "genre",
+                            pt1.total as "total_genre", 
+                            pt2.total as "total", 
+                            round(cast(pt1.total as numeric)/cast(pt2.total as numeric)*100,2) as "percent"
+                        FROM(
+                            SELECT '1' id ,
+                                genre,
+                                count(*) total
+                            FROM res_partner
+                            GROUP BY  genre
+                            ) as pt1
+                        JOIN (
+                            SELECT '1' as id,
+                                count(*) total
+                            FROM res_partner
+                            ) as pt2
+                        ON pt1.id = pt2.id
+                        )
+                 '''
+                                )
+            '''return {
+                'name': "Reporte de Generos Contatos",
+                'view_mode': 'pivot',
+                'view_id': False,
+                'view_type': 'pivot',
+                'res_model': 'data.genre.report',
+                'type': 'ir.actions.act_window',
+                'nodestroy': True,
+                'domain': '[]',
+                'context': None
+            }'''
 
 
 class ResPartner(models.Model):
