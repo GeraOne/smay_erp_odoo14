@@ -52,9 +52,20 @@
                 </pivot>
             </field>
         </record>
+        <record id="action_report_contacts" model="ir.actions.act_window">
+            <field name="name">Reporte de Contactos</field>
+            <field name="res_model">data.genre.report</field>
+            <field name="view_mode">pivot</field>
+        </record>
 
         <menuitem  id="menu_report_contacts" name="Reportes"
-                  parent="contacts.menu_contacts_root" sequence="5" />
+                   parent="contacts.menu_contacts"
+                    groups="base.group_system" sequence="5" />
+
+        <menuitem  id="menu_report_contacts_report" name="Contactos"
+                   parent="menu_report_contacts"
+                   action="action_report_contacts"
+                    groups="base.group_system" sequence="1" />
 
         <!--
 
