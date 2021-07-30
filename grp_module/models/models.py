@@ -42,11 +42,6 @@ class GenreReport(models.Model):
                     )
              '''
         )
-
-
-
-    def generate_report(self):
-        self.env['stock.report.smay'].init()
         return {
             'name': _("Reporte de Generos Contatos"),
             'view_mode': 'pivot',
@@ -58,6 +53,22 @@ class GenreReport(models.Model):
             'domain': '[]',
             'context': None
         }
+
+
+
+    '''def generate_report(self):
+        self.env['stock.report.smay'].init()
+        return {
+            'name': _("Reporte de Generos Contatos"),
+            'view_mode': 'pivot',
+            'view_id': False,
+            'view_type': 'pivot',
+            'res_model': 'data.genre.report',
+            'type': 'ir.actions.act_window',
+            'nodestroy': True,
+            'domain': '[]',
+            'context': None
+        }'''
 
 
 class ResPartner(models.Model):
@@ -75,6 +86,7 @@ class ResPartner(models.Model):
             contact.update({
                 'genre': new_genre
             })
+            self.env['data.genre.report'].init()
             return True
 
     def create(self, vals):
