@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_grp_module_grp_module,grp_module.grp_module,model_grp_module_grp_module,base.group_user,1,1,1,1
+access_data_genre_report,access_data_genre_report,model_data_genre_report,base.group_user,1,1,1,1
