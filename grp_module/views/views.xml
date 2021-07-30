@@ -40,8 +40,8 @@
         parent="menu_contacts"
         sequence="3"/>-->
 
-        <menuitem action="action_stock_report_contacts" id="menu_report_contacts" name="Reporte de Genero Contactos"
-                  parent="contacts.res_partner_menu_config" sequence="5" />
+        <menuitem  id="menu_report_contacts" name="Reporte de Genero Contactos"
+                  parent="contacts.menu_contacts" sequence="5" groups="base.group_user/>
 
         <!--
 
