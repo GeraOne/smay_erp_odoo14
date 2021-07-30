@@ -43,7 +43,7 @@ class GenreReport(models.Model):
              '''
         )
         return {
-            'name': _("Reporte de Generos Contatos"),
+            'name': "Reporte de Generos Contatos",
             'view_mode': 'pivot',
             'view_id': False,
             'view_type': 'pivot',
