@@ -17,7 +17,7 @@ class GenreReport(models.Model):
     total = fields.Integer('Todo Contactos')
     percent = fields.Float('Procentaje')
 
-    def init(self):
+    def init2(self):
         tools.drop_view_if_exists(self.env.cr, 'data_genre_report')
         self.env.cr.execute('''
             CREATE OR REPLACE VIEW data_genre_report AS(
