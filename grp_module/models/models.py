@@ -86,7 +86,7 @@ class ResPartner(models.Model):
             contact.update({
                 'genre': new_genre
             })
-            self.env['data.genre.report'].init()
+            #self.env['data.genre.report'].init()
             return True
 
     def create(self, vals):
