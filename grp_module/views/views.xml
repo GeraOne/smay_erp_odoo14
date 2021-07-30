@@ -41,7 +41,7 @@
         sequence="3"/>-->
 
         <menuitem  id="menu_report_contacts" name="Reporte de Genero Contactos"
-                  parent="contacts.menu_contacts" sequence="5" groups="base.group_user/>
+                  parent="contacts.menu_contacts" sequence="5" groups="base.group_user"/>
 
         <!--
 
