@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api,tools
+from odoo import models, fields, api, tools
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -41,24 +41,8 @@ class GenreReport(models.Model):
                     ON pt1.id = pt2.id
                     )
              '''
-        )
-        return {
-            'name': "Reporte de Generos Contatos",
-            'view_mode': 'pivot',
-            'view_id': False,
-            'view_type': 'pivot',
-            'res_model': 'data.genre.report',
-            'type': 'ir.actions.act_window',
-            'nodestroy': True,
-            'domain': '[]',
-            'context': None
-        }
-
-
-
-    '''def generate_report(self):
-        self.env['stock.report.smay'].init()
-        return {
+                            )
+        '''return {
             'name': "Reporte de Generos Contatos",
             'view_mode': 'pivot',
             'view_id': False,
@@ -73,20 +57,20 @@ class GenreReport(models.Model):
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
-    genre = fields.Selection([('hombre', 'HOMBRE'), ('mujer', 'MUJER'), ], 'Genero', default='mujer', required=True)
+    genre = fields.Selection([('masculino', 'HOMBRE'), ('femenino', 'MUJER'), ], 'Genero', default='femenino',
+                             required=True)
 
     def change_genre(self):
         for contact in self:
             new_genre = ''
-            if contact.genre == 'mujer':
-                new_genre = 'hombre'
+            if contact.genre == 'femenino':
+                new_genre = 'masculino'
             else:
-                new_genre = 'mujer'
+                new_genre = 'femenino'
 
             contact.update({
                 'genre': new_genre
             })
-            #self.env['data.genre.report'].init()
             return True
 
     def create(self, vals):
