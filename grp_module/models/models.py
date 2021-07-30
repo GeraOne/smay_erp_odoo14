@@ -42,7 +42,7 @@ class GenreReport(models.Model):
                     )
              '''
                             )
-        return {
+        '''return {
             'name': "Reporte de Generos Contatos",
             'view_mode': 'pivot',
             'view_id': False,
@@ -52,7 +52,7 @@ class GenreReport(models.Model):
             'nodestroy': True,
             'domain': '[]',
             'context': None
-        }
+        }'''
 
 
 class ResPartner(models.Model):
